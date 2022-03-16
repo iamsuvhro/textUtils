@@ -12,6 +12,11 @@ export default function TextForm(props) {
         setText(text.toLocaleLowerCase());
     }
 
+    const handleClean = () =>{
+        setText('');
+    }
+
+
     // function to change first alphabet to uppercase
     const handleFirstCase = () =>{
         const str = text;
@@ -40,7 +45,7 @@ export default function TextForm(props) {
         <button className="btn btn-primary" onClick={handleUpCase}>Convert to Uppercase</button>&nbsp;
         <button className="btn btn-primary" onClick={handleLowCase}>Convert to Lowercase</button>&nbsp;
         <button className="btn btn-primary" onClick={handleFirstCase}>Convert to First Alphabets to Uppercase</button>&nbsp;
-        <button className="btn btn-primary">Clean</button>&nbsp;
+        <button className="btn btn-primary" onClick={handleClean}>Clean</button>&nbsp;
     </div>
     </>
   )
