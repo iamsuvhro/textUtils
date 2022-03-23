@@ -33,8 +33,19 @@ export default function TextForm(props) {
         setText(event.target.value);
     }
 
+    const handleCopy = () =>{
+        var text = document.getElementById("exampleFormControlTextarea1")
+        text.select();
+        navigator.clipboard.writeText(text.value)
+    }
 
-    const [text,setText] = useState('Enter text');
+    const handleRemoveExtraSpaces = () =>{
+       let newText = text.split(/[ ]+/);
+       setText(newText.join(" "))
+
+    }
+
+    const [text,setText] = useState('');
     //setText('Hello enter your text');
   return (
     <>
@@ -43,15 +54,20 @@ export default function TextForm(props) {
         <div className="my-4">
         <textarea className="form-control" id="exampleFormControlTextarea1" onChange={handleOnChange} value={text} rows="10"></textarea>
         </div>
-        <button className="btn btn-primary" onClick={handleUpCase}>Convert to Uppercase</button>&nbsp;
-        <button className="btn btn-primary" onClick={handleLowCase}>Convert to Lowercase</button>&nbsp;
-        <button className="btn btn-primary" onClick={handleFirstCase}>Convert to First Alphabets to Uppercase</button>&nbsp;
-        <button className="btn btn-primary" onClick={handleClean}>Clean</button>&nbsp;
+        <button className="btn btn-primary mx-1" onClick={handleUpCase}>Convert to Uppercase</button>&nbsp;
+        <button className="btn btn-primary mx-1" onClick={handleLowCase}>Convert to Lowercase</button>&nbsp;
+        <button className="btn btn-primary mx-1" onClick={handleFirstCase}>Convert to First Alphabets to Uppercase</button>&nbsp;
+        <button className="btn btn-primary mx-1" onClick={handleClean}>Clean</button>&nbsp;
+        <button className="btn btn-primary mx-1" onClick={handleCopy}>Copy</button>&nbsp;
+        <button className="btn btn-primary mx-1" onClick={handleRemoveExtraSpaces}>Remove Extra Spaces</button>&nbsp;
     </div>
     <div className="container my-3">
         <h3>Summary</h3>
-        <p>Total characters are: {text.length}</p>
-        <p>Total words are: {text.split(" ").length-1}</p>
+        <p>Total characters are : {text.length}</p>
+        <p>Total words are : {text.split(" ").length-1}</p>
+        <p>Minutes Read : {0.008 * text.split(" ").length - 0.008 }</p>
+        <h2>Preview</h2>
+        <p>{text}</p>
     </div>
     </>
   )
