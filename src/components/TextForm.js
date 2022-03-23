@@ -5,15 +5,18 @@ export default function TextForm(props) {
     // function to change the entire value to uppercase
     const handleUpCase = () =>{
         setText(text.toUpperCase());
+        props.showAlert('Converted to uppercase','success');
     }
 
     // function to change the entire value to lowercase
     const handleLowCase = () =>{
         setText(text.toLocaleLowerCase());
+        props.showAlert('Converted to lowercase','success');
     }
     // function to clean context
     const handleClean = () =>{  
         setText('');
+        props.showAlert('Cleaned','success');
     }
 
     // function to change first alphabet to uppercase
@@ -26,6 +29,7 @@ export default function TextForm(props) {
         }
         const result = arr.join(" ");
         setText(result);
+        props.showAlert('First alphabet successfully converted to Uppercase','success');
     }
 
     // function to update the default text value
@@ -37,15 +41,20 @@ export default function TextForm(props) {
         var text = document.getElementById("exampleFormControlTextarea1")
         text.select();
         navigator.clipboard.writeText(text.value)
+        props.showAlert('Copy successfull','success')
     }
 
     const handleRemoveExtraSpaces = () =>{
        let newText = text.split(/[ ]+/);
        setText(newText.join(" "))
+       props.showAlert('Extra space removed','success')
 
     }
+    // Change font to bold
+    
 
     const [text,setText] = useState('');
+
     //setText('Hello enter your text');
   return (
     <>
@@ -66,8 +75,7 @@ export default function TextForm(props) {
         <p>Total characters are : {text.length}</p>
         <p>Total words are : {text.split(" ").length-1}</p>
         <p>Minutes Read : {0.008 * text.split(" ").length - 0.008 }</p>
-        <h2>Preview</h2>
-        <p>{text}</p>
+        <h4>{text.length >0?text:'Enter you text to get preview'}</h4>
     </div>
     </>
   )
