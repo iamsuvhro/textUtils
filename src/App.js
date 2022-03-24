@@ -1,11 +1,17 @@
 //import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/Navbar';
-import Body from './components/Body';
 import TextForm from './components/TextForm';
-import showAlert from './components/Navbar';
 import React, {useState} from 'react';
 import Alert from './components/Alert';
+import About from './components/About';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+
+
 function App() {
 
   const [btnText, setbtnText] = useState("Dark mode");
@@ -49,10 +55,20 @@ function App() {
     }
   return (
     <>
+    <Router>
+
     <Navbar title="Text Editor" myStyle={myStyle} modeColor={modeColor} btnText={btnText} toggleStyle={toggleStyle}/>
     <Alert alert={alert}/>
-    <Body/>
-    <TextForm heading="Text Editing Tools" showAlert={showAlert}/>
+    <Switch>
+      <Route path="/about">
+        <About />
+      </Route>
+
+      <Route path="/">
+        <TextForm heading="Text Editing Tools" showAlert={showAlert}/>
+      </Route>
+    </Switch>
+    </Router>
     </>
   );
 }
