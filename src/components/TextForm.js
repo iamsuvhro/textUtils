@@ -4,19 +4,35 @@ export default function TextForm(props) {
 
     // function to change the entire value to uppercase
     const handleUpCase = () =>{
-        setText(text.toUpperCase());
-        props.showAlert('Converted to uppercase','success');
+        if (text.length === 0){
+            props.showAlert('Please enter your text','warning');
+        }
+        else{
+            setText(text.toUpperCase());
+            props.showAlert('Converted to uppercase','success');
+        }
     }
 
     // function to change the entire value to lowercase
     const handleLowCase = () =>{
+        if (text.length === 0){
+            props.showAlert('Please enter your text','warning');
+        }
+        else{
         setText(text.toLocaleLowerCase());
         props.showAlert('Converted to lowercase','success');
+        }
     }
     // function to clean context
     const handleClean = () =>{  
-        setText('');
-        props.showAlert('Cleaned','success');
+        if (text.length === 0){
+            props.showAlert('Please enter your text to clean','warning');
+        }
+        else{
+            setText('');
+            props.showAlert('Cleaned','success');
+        }
+        
     }
 
     // function to change first alphabet to uppercase
