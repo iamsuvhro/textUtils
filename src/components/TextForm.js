@@ -25,8 +25,14 @@ export default function TextForm(props) {
     }
     // function to clean context
     const handleClean = () =>{  
-        setText('');
-        props.showAlert('Cleaned','success');
+        if (text.length === 0){
+            props.showAlert('Please enter your text to clean','warning');
+        }
+        else{
+            setText('');
+            props.showAlert('Cleaned','success');
+        }
+        
     }
 
     // function to change first alphabet to uppercase
