@@ -60,11 +60,11 @@ function App() {
     <Navbar title="Text Editor" myStyle={myStyle} modeColor={modeColor} btnText={btnText} toggleStyle={toggleStyle}/>
     <Alert alert={alert}/>
     <Switch>
-      <Route path="/about">
+      <Route exact path="/about">
         <About />
       </Route>
 
-      <Route path="/">
+      <Route exact path="/">
         <TextForm heading="Text Editing Tools" showAlert={showAlert}/>
       </Route>
     </Switch>
