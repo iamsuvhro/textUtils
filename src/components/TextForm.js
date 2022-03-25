@@ -4,8 +4,13 @@ export default function TextForm(props) {
 
     // function to change the entire value to uppercase
     const handleUpCase = () =>{
-        setText(text.toUpperCase());
-        props.showAlert('Converted to uppercase','success');
+        if (text.length === 0){
+            props.showAlert('Please enter your text','warning');
+        }
+        else{
+            setText(text.toUpperCase());
+            props.showAlert('Converted to uppercase','success');
+        }
     }
 
     // function to change the entire value to lowercase
