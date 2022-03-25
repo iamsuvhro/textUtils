@@ -1,6 +1,6 @@
 # Getting Started with Text Utils
 
-Live at: https://golden-dasik-49d37d.netlify.app/
+Live at: https://projectsofsuvhradip.netlify.app/
 
 In the project directory, you can run:
 
