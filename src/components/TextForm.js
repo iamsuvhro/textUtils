@@ -37,6 +37,10 @@ export default function TextForm(props) {
 
     // function to change first alphabet to uppercase
     const handleFirstCase = () =>{
+        if (text.length === 0){
+            props.showAlert('Please enter your text to clean','warning');
+        }
+        else{
         const str = text;
         const arr = str.split(" ");
         for (var i = 0; i < arr.length; i++) {
@@ -46,6 +50,7 @@ export default function TextForm(props) {
         const result = arr.join(" ");
         setText(result);
         props.showAlert('First alphabet successfully converted to Uppercase','success');
+        }
     }
 
     // function to update the default text value
@@ -61,9 +66,14 @@ export default function TextForm(props) {
     }
 
     const handleRemoveExtraSpaces = () =>{
+        if (text.length === 0){
+            props.showAlert('Please enter your text to clean','warning');
+        }
+        else{
        let newText = text.split(/[ ]+/);
        setText(newText.join(" "))
-       props.showAlert('Extra space removed','success')
+       props.showAlert('Extra space removed','success');
+        }
 
     }
     // Change font to bold
