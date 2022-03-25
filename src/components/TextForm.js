@@ -15,8 +15,13 @@ export default function TextForm(props) {
 
     // function to change the entire value to lowercase
     const handleLowCase = () =>{
+        if (text.length === 0){
+            props.showAlert('Please enter your text','warning');
+        }
+        else{
         setText(text.toLocaleLowerCase());
         props.showAlert('Converted to lowercase','success');
+        }
     }
     // function to clean context
     const handleClean = () =>{  
